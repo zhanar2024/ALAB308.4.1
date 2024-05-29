@@ -1,7 +1,7 @@
 const csv =
   "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26";
 
-//Turning csv into an array of arrays
+//Part 2 - Expanding Functionality - Turning csv into an array of arrays
 
 function csvToArrayOfArrays(csvString) {
   const rows = csvString.split("\n");
@@ -13,7 +13,7 @@ function csvToArrayOfArrays(csvString) {
   return arrayOfArrays;
 }
 
-// Turning an array of arrays to array of objects
+// Part 3 - Transforming Data - Turning an array of arrays to array of objects
 
 function arrayOfArraysToObjects(arrayOfArrays) {
   const headers = arrayOfArrays[0];
@@ -37,7 +37,7 @@ console.log(csv);
 console.log(arrayOfArrays);
 console.log(arrayOfObjects);
 
-//Calculating the average age of the group
+//Part 4 - Sorting and Manipulating Data - Calculating the average age of the group
 
 let totalAge = 0;
 for (const obj of arrayOfObjects) {
@@ -47,3 +47,21 @@ for (const obj of arrayOfObjects) {
 const averageAge = totalAge / arrayOfObjects.length;
 
 console.log("The average age is: " + averageAge);
+
+//Part 5 - Full circle - Transforming the final set of data back into CSV format
+
+function arrayOfObjectsToCSV(arrayOfObjects) {
+  if (arrayOfObjects.length === 0) return "";
+
+  const headers = Object.keys(arrayOfObjects[0]);
+  const csvRows = [headers.join(",")];
+
+  for (const obj of arrayOfObjects) {
+    const row = headers.map((header) => obj[header]);
+    csvRows.push(row.join(","));
+  }
+  return csvRows.join("\n");
+}
+
+const newCsv = arrayOfObjectsToCSV(arrayOfObjects);
+console.log(newCsv);
