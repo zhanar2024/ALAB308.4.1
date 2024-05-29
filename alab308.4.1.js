@@ -33,6 +33,17 @@ const arrayOfArrays = csvToArrayOfArrays(csv);
 const arrayOfObjects = arrayOfArraysToObjects(arrayOfArrays);
 
 //Checking if it worked
-//console.log(csv);
-//console.log(arrayOfArrays);
+console.log(csv);
+console.log(arrayOfArrays);
 console.log(arrayOfObjects);
+
+//Calculating the average age of the group
+
+let totalAge = 0;
+for (const obj of arrayOfObjects) {
+  totalAge += parseInt(obj.Age);
+}
+
+const averageAge = totalAge / arrayOfObjects.length;
+
+console.log("The average age is: " + averageAge);
