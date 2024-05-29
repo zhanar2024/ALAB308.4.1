@@ -16,12 +16,12 @@ function csvToArrayOfArrays(csvString) {
 // Turning an array of arrays to array of objects
 
 function arrayOfArraysToObjects(arrayOfArrays) {
-  const headers = arrayOfArrays.shift();
+  const headers = arrayOfArrays[0];
   const result = [];
   for (let i = 1; i < arrayOfArrays.length; i++) {
     const row = arrayOfArrays[i];
     const newObject = {};
-    for (let j = 0; j < headers.length; i++) {
+    for (let j = 0; j < headers.length; j++) {
       newObject[headers[j]] = row[j];
     }
     result.push(newObject);
@@ -33,6 +33,6 @@ const arrayOfArrays = csvToArrayOfArrays(csv);
 const arrayOfObjects = arrayOfArraysToObjects(arrayOfArrays);
 
 //Checking if it worked
-console.log(csv);
-console.log(arrayOfArrays);
+//console.log(csv);
+//console.log(arrayOfArrays);
 console.log(arrayOfObjects);
